@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/message.png" type="Texture" id=1]
+[ext_resource path="res://Environment/UI/MenuLayer.gd" type="Script" id=2]
+[ext_resource path="res://fonts/flappyfont48.tres" type="DynamicFont" id=3]
+
+[node name="MenuLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="startMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartMessage" type="TextureRect" parent="startMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -332.0
+margin_right = 141.0
+margin_bottom = 68.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gameOverMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gameOverMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -250.0
+margin_right = 101.0
+margin_bottom = -55.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="gameOverMenu/VBoxContainer"]
+margin_right = 241.0
+margin_bottom = 49.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "SCORE"
+align = 1
+
+[node name="HighScoreLabel" type="Label" parent="gameOverMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 241.0
+margin_bottom = 113.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "BEST"
+align = 1
+
+[node name="RestartButton" type="Button" parent="gameOverMenu/VBoxContainer"]
+margin_top = 128.0
+margin_right = 241.0
+margin_bottom = 183.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "RESTART"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="gameOverMenu/VBoxContainer/RestartButton" to="." method="_on_Button_pressed"]
